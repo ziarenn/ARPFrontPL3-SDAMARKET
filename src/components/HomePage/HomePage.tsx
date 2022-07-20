@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Typography } from "@mui/material";
+import CategoryMenu from "../CategoryMenu/CategoryMenu";
 const HomePage = () => {
   const [categories, setCategories] = useState<string[] | undefined>();
 
@@ -23,7 +24,7 @@ const HomePage = () => {
         Browse and buy your favorite electronics, jewellery and clothes. All in
         one place.
       </Typography>
-      {/* <CategoryMenu categories={categories}/> */}
+      {categories && <CategoryMenu categories={categories} />}
       <Typography
         variant="h3"
         component="h3"

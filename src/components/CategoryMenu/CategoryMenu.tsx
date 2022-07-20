@@ -1,7 +1,15 @@
 import React from "react";
 import { CategoryMenuProps } from "../../helpers/interfaces";
+import { Paper } from "@mui/material";
+import CategoryTile from "../CategoryTile/CategoryTile";
 const CategoryMenu: React.FC<CategoryMenuProps> = ({ categories }) => {
-  return <div>CategoryMenu</div>;
+  return (
+    <Paper elevation={1} sx={{ my: "2rem" }}>
+      {categories.map((el: string, i: number) => {
+        return <CategoryTile category={el} />;
+      })}
+    </Paper>
+  );
 };
 
 export default CategoryMenu;
