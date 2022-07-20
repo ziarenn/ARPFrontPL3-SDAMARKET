@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Typography } from "@mui/material";
 import CategoryMenu from "../CategoryMenu/CategoryMenu";
+import Bestsellers from "../Bestsellers/Bestsellers";
 const HomePage = () => {
   const [categories, setCategories] = useState<string[] | undefined>();
 
@@ -38,27 +39,12 @@ const HomePage = () => {
       >
         Our bestsellers:
       </Typography>
-      {/* <Bestsellers/> */}
+      <Bestsellers />
     </>
   );
 };
 
 export default HomePage;
-
-
-
-
-// interface Product
-// interface Rating
-
-// Stwórz komponent Bestsellers
-// stan bestsellers (typ Product[])
-// useEffect i fetch do linku `https://fakestoreapi.com/products?limit=10`, response do stanu bestsellers
-// JSX: 
-// Card
-// w Card pętla z wyświetleniem komponentów ProductTile
-
-// interface ProductTileProps, product: Product
 
 // Stwórz komponent ProductTile, propsy: product
 // stan clicked
