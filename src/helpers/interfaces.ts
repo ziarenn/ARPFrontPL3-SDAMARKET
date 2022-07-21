@@ -1,3 +1,5 @@
+import React, { PropsWithoutRef } from "react";
+
 export interface CategoryMenuProps {
   categories: string[];
 }
@@ -22,5 +24,12 @@ export interface Product {
 }
 
 export interface ProductTileProps {
+  product: Product;
+}
+
+export interface ProductPageProps {
+  category: string;
+}
+export interface CartProductTileProps {
   product: Product;
 }
