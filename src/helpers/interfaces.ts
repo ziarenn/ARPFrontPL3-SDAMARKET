@@ -33,3 +33,8 @@ export interface ProductPageProps {
 export interface CartProductTileProps {
   product: Product;
 }
+export interface RegisterFormInputs {
+  email: string;
+  password1: string;
+  password2: string;
+}
