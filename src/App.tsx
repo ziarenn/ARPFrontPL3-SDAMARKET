@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./components/HomePage/HomePage";
 import ProductPage from "./components/ProductPage/ProductPage";
@@ -6,11 +6,19 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CartPage from "./components/CartPage/CartPage";
 import RegisterPage from "./components/RegisterPage/RegisterPage";
 import LoginPage from "./components/LoginPage/LoginPage";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./helpers/firebaseConfig";
 function App() {
+  const [loggedIn, setLoggedIn] = useState<boolean>(false);
+
+  onAuthStateChanged(auth, (user) => {
+    user ? setLoggedIn(true) : setLoggedIn(false);
+  });
+
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+        <Navbar loggedIn={loggedIn}/>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route

@@ -42,3 +42,6 @@ export interface LoginPageInputs {
   email: string;
   password: string;
 }
+export interface NavbarProps {
+  loggedIn: boolean;
+}

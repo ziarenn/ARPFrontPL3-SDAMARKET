@@ -1,8 +1,18 @@
 import React from "react";
 import { AppBar, Box, Toolbar, Typography, Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import { NavbarProps } from "../../helpers/interfaces";
+import { signOut } from "firebase/auth";
+import { auth } from "../../helpers/firebaseConfig";
+const Navbar: React.FC<NavbarProps> = ({ loggedIn }) => {
+  const buttonClickHandler = () => {
+    if (loggedIn) {
+      signOut(auth).then(() => {
+        console.log("Signed out successfully");
+      });
+    }
+  };
 
-const Navbar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: "orange" }}>
@@ -69,12 +79,16 @@ const Navbar = () => {
               Cart
             </Button>
           </Link>
-          <Link to="/login" style={{ textDecoration: "none" }}>
+          <Link
+            to={loggedIn ? "/" : "/login"}
+            style={{ textDecoration: "none" }}
+          >
             <Button
               variant="contained"
               sx={{ bgcolor: "#FC766AFF", mr: "0.1rem" }}
+              onClick={buttonClickHandler}
             >
-              Log in
+              {loggedIn ? "Log out" : "Log in"}
             </Button>
           </Link>
         </Toolbar>
@@ -84,3 +98,11 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// wymyśl sposób na aktualizacje stanu logowania
+
+// Button login ma zmieniać tekst między Log in/Log out w zależności od stanu logowania
+// ma się też zmieniać funkcjonalność, czyli
+// gdy tekst w buttonie to log in,
+// to ma przenosić na stronę logowania, jeżeli log out to ma wylogowywać
+// na button daj odpowiedni onclick (signOut (firebase))
