@@ -99,10 +99,3 @@ const Navbar: React.FC<NavbarProps> = ({ loggedIn }) => {
 
 export default Navbar;
 
-// wymyśl sposób na aktualizacje stanu logowania
-
-// Button login ma zmieniać tekst między Log in/Log out w zależności od stanu logowania
-// ma się też zmieniać funkcjonalność, czyli
-// gdy tekst w buttonie to log in,
-// to ma przenosić na stronę logowania, jeżeli log out to ma wylogowywać
-// na button daj odpowiedni onclick (signOut (firebase))
