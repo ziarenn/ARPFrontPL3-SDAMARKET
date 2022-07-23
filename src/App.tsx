@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./components/HomePage/HomePage";
 import ProductPage from "./components/ProductPage/ProductPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CartPage from "./components/CartPage/CartPage";
 function App() {
   return (
     <div className="App">
@@ -26,6 +27,7 @@ function App() {
             path="/womans"
             element={<ProductPage category="women's clothing" />}
           />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
       </BrowserRouter>
     </div>
@@ -48,3 +50,12 @@ export default App;
 // Typography product.title
 // Typography product.price
 // Button text: Remove from cart
+
+// Stwórz komponent CartPage
+// stan products
+// fetch na 5 produktów, dane do stanu products
+// w komponencie tworzycie funkcję calculateTotal, która będzie zliczała cenę wszystkich produktów w koszyku
+// JSX:
+// products.map, wyświetlanie CartProductTile w pętli
+// Typography z ceną łączną wszystkich produktów w koszyku
+// Button text Order
