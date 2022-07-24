@@ -1,12 +1,23 @@
 import React from "react";
 import { AppBar, Box, Toolbar, Typography, Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import { NavbarProps } from "../../helpers/interfaces";
 import { signOut } from "firebase/auth";
 import { auth } from "../../helpers/firebaseConfig";
-const Navbar: React.FC<NavbarProps> = ({ loggedIn }) => {
+import { useSelector } from "react-redux";
+
+interface AuthState {
+  authState: boolean;
+}
+
+interface State {
+  authState: AuthState;
+}
+
+const Navbar = () => {
+  const authState = useSelector((state: State) => state.authState.authState);
+
   const buttonClickHandler = () => {
-    if (loggedIn) {
+    if (authState) {
       signOut(auth).then(() => {
         console.log("Signed out successfully");
       });
@@ -80,7 +91,7 @@ const Navbar: React.FC<NavbarProps> = ({ loggedIn }) => {
             </Button>
           </Link>
           <Link
-            to={loggedIn ? "/" : "/login"}
+            to={authState ? "/" : "/login"}
             style={{ textDecoration: "none" }}
           >
             <Button
@@ -88,7 +99,7 @@ const Navbar: React.FC<NavbarProps> = ({ loggedIn }) => {
               sx={{ bgcolor: "#FC766AFF", mr: "0.1rem" }}
               onClick={buttonClickHandler}
             >
-              {loggedIn ? "Log out" : "Log in"}
+              {authState ? "Log out" : "Log in"}
             </Button>
           </Link>
         </Toolbar>
@@ -98,4 +109,3 @@ const Navbar: React.FC<NavbarProps> = ({ loggedIn }) => {
 };
 
 export default Navbar;
-
