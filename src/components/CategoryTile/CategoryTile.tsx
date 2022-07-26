@@ -38,3 +38,14 @@ const CategoryTile: React.FC<CategoryTileProps> = ({ category }) => {
 };
 
 export default CategoryTile;
+
+// 1. Stwórz typ akcji FETCH_IMAGES w ActionTypes.ts
+// 2. Stwórz odpowiedni case w reducerze productReducer
+// 3. Stwórz kreator akcji fetchImages:
+// a) w argumencie kreator będzie przyjmował liste kategorii (która będzie listą stringów)
+// b) dla każdej kategorii ma zostać wykonany osobny fetch
+// c) dispatch:
+// - type: ActionTypes.FETCH_IMAGES
+// - payload: (lista z linkami do obrazków)
+// 4. W CategoryTile.tsx nie ma być fetcha, link do obrazka ma być przekazany propsem.
+// 5. Sam dispatch i wywołanie fetchImages ma być w CategoryMenu.tsx (w useEffect by wykonało sie tylko 1 raz), w CategoryMenu zastosuj useSelector do wyciągnięcia listy fetchedImages ze stanu
