@@ -4,6 +4,7 @@ import { Card, Box, Typography, Paper, Button } from "@mui/material";
 
 const ProductTile: React.FC<ProductTileProps> = ({ product }) => {
   const [clicked, setClicked] = useState<boolean>(false);
+  
   return (
     <>
       <Card

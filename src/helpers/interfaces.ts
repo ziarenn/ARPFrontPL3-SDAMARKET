@@ -45,3 +45,11 @@ export interface LoginPageInputs {
 export interface NavbarProps {
   loggedIn: boolean;
 }
+export interface initialState {
+  fetchedProducts: Product[] | [];
+}
+export interface State {
+  allProducts: {
+    fetchedProducts: Product[] | [];
+  };
+}
